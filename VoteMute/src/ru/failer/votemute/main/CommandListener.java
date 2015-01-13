@@ -15,7 +15,7 @@ public class CommandListener implements CommandExecutor {
 			return true;
 		}
 		if (cmd.getName().equals("vote")) {
-			VoteHandler.Vote(arg3[0]);
+			VoteHandler.Vote(arg3[0], Bukkit.getPlayer(sender.getName()));
 			return true;
 		}
 		return false;

@@ -10,6 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Main extends JavaPlugin implements Listener {
 	public static int vote;
 	public static int mute;
+	public static int cd;
 
 	public void onEnable() {
 		this.saveDefaultConfig();
@@ -21,6 +22,7 @@ public class Main extends JavaPlugin implements Listener {
 
 		mute = this.getConfig().getInt("votemute.time_mute");
 		vote = this.getConfig().getInt("votemute.time_vote");
+		cd = this.getConfig().getInt("votemute.cd");
 	}
 
 	@EventHandler

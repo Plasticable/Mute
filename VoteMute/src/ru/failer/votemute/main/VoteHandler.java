@@ -13,8 +13,15 @@ public class VoteHandler {
 	static String plVoteName;
 	static String plName;
 	static ArrayList<String> playersvote;
-
+	public static Player player;
+	static Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin("VoteMute");
+	public static boolean cd = false;
 	public static void startVote(String pName, Player psName) {
+		if(cd){
+			psName.sendMessage("[VOTEMSG] ѕерерыв между голосовани€ми еще не прошел!");
+			return;
+		}
+		player = psName;
 		boolean t = false;
 		for (Player p : Bukkit.getOnlinePlayers()) {
 			if (p.getName().equals(pName)) {
@@ -40,7 +47,7 @@ public class VoteHandler {
 				playersvote = new ArrayList<String>();
 				truevote = 0;
 				falsevote = 0;
-				Plugin plugin = Bukkit.getServer().getPluginManager().getPlugin("VoteMute");
+			
 				Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
 
 					public void run() {
@@ -54,9 +61,14 @@ public class VoteHandler {
 		}
 	}
 
-	public static void Vote(String votestr) {
+	public static void Vote(String votestr,Player pl) {
+		
 		boolean t = false;
 		if (vote == true) {
+			if(pl.equals(player)) {
+				pl.sendMessage("[VOTEMSG] ¬ы начали голосование, вы не можете голосовать!");
+				return;
+			}
 			if (playersvote.size() != 0) {
 				for (int i = 0; i < playersvote.size(); i++) {
 					if (playersvote.get(i).equals(plVoteName)) {
@@ -104,6 +116,15 @@ public class VoteHandler {
 			Bukkit.getServer().broadcastMessage("[VOTEMSG] √олосов против больше! " + plName + " не  будет замучен!");
 		}
 		playersvote = null;
+		cd = true;
+		Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
+
+			public void run() {
+				cd = false;
+			}
+
+		}, Main.cd * 20);
+	
 	}
 
 }
