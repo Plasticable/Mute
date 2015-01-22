@@ -9,7 +9,7 @@ public class CommandListener implements CommandExecutor {
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String text, String[] arg3) {
-
+		if(arg3.length >=1) {
 		if (cmd.getName().equals("vmute")) {
 			VoteHandler.startVote(arg3[0], Bukkit.getPlayer(sender.getName()));
 			return true;
@@ -19,6 +19,7 @@ public class CommandListener implements CommandExecutor {
 			return true;
 		}
 		return false;
+	}
 	}
 
 }
