@@ -1,0 +1,13 @@
+name: VoteMute
+main: ru.failer.votemute.main.Main
+description: VoteMute
+version: 0.1[beta]
+
+commands:
+        vmute:
+              description: /action set nameArena
+              usage: /<command> set nameArena
+        vote:
+              description: /action set nameArena
+              usage: /<command> set nameArena
+
