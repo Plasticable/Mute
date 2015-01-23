@@ -28,8 +28,12 @@ public class Main extends JavaPlugin implements Listener {
 	@EventHandler
 	public void onsend(PlayerChatEvent event) {
 		if (Mute.checkMute(event.getPlayer().getName()) == true) {
+			if(event.getMessage().charAt(0) != '/'){
+				
+			
 			event.setCancelled(true);
-			event.getPlayer().sendMessage("[VOTEMSG] Вы не можете писать в чат!");
+			event.getPlayer().sendMessage("[VOTEMSG] Р’С‹ РЅРµ РјРѕР¶РµС‚Рµ РїРёСЃР°С‚СЊ РІ С‡Р°С‚!");
+		}
 		}
 	}
 

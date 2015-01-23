@@ -47,7 +47,7 @@ public class VoteHandler {
 				playersvote = new ArrayList<String>();
 				truevote = 0;
 				falsevote = 0;
-			
+				Bukkit.getServer().broadcastMessage("Началось голосование за мут игрока "+pName);
 				Bukkit.getScheduler().scheduleSyncDelayedTask(plugin, new Runnable() {
 
 					public void run() {
