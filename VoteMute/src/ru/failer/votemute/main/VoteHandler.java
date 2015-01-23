@@ -18,7 +18,7 @@ public class VoteHandler {
 	public static boolean cd = false;
 	public static void startVote(String pName, Player psName) {
 		if(cd){
-			psName.sendMessage("[VOTEMSG] Перерыв между голосованиями еще не прошел!");
+			psName.sendMessage("[VOTEMSG] РџРµСЂРµСЂС‹РІ РјРµР¶РґСѓ РєРѕРјР°РЅРґР°РјРё РµС‰Рµ РЅРµ РїСЂРѕС€РµР»!");
 			return;
 		}
 		player = psName;
@@ -33,13 +33,13 @@ public class VoteHandler {
 		if (t == true) {
 			if (Mute.checkMute(pName) == true) {
 
-				psName.sendMessage("[VOTEMSG] Данный игрок уже в муте!");
+				psName.sendMessage("[VOTEMSG] Р­С‚РѕС‚ РёРіСЂРѕРє СѓР¶Рµ РІ РјСѓС‚Рµ!");
 				return;
 			}
 			plName = pName;
 			plVoteName = psName.getName();
 			if (vote == true) {
-				psName.sendMessage("[VOTEMSG] Голосование уже идет!");
+				psName.sendMessage("[VOTEMSG] Р“РѕР»РѕСЃРѕРІР°РЅРёРµ СѓР¶Рµ РёРґРµС‚!");
 				return;
 			} else {
 				vote = true;
@@ -57,7 +57,7 @@ public class VoteHandler {
 				}, Main.vote * 20);
 			}
 		} else {
-			psName.sendMessage("[VOTEMSG] Такого игрока нет на сервере!");
+			psName.sendMessage("[VOTEMSG] РўР°РєРѕРіРѕ РёРіСЂРѕРєР° РЅРµС‚ РЅР° СЃРµСЂРІРµСЂРµ!");
 		}
 	}
 
@@ -66,14 +66,14 @@ public class VoteHandler {
 		boolean t = false;
 		if (vote == true) {
 			if(pl.equals(player)) {
-				pl.sendMessage("[VOTEMSG] Вы начали голосование, вы не можете голосовать!");
+				pl.sendMessage("[VOTEMSG] Р’С‹ РЅР°С‡Р°Р»Рё РіРѕР»РѕСЃРѕРІР°РЅРёРµ, РІС‹ РЅРµ РјРѕР¶РµС‚Рµ РіРѕР»РѕСЃРѕРІР°С‚СЊ!");
 				return;
 			}
 			if (playersvote.size() != 0) {
 				for (int i = 0; i < playersvote.size(); i++) {
 					if (playersvote.get(i).equals(plVoteName)) {
 						t = true;
-						Bukkit.getPlayer(plVoteName).sendMessage("[VOTEMSG] Вы уже проголосовали!");
+						Bukkit.getPlayer(plVoteName).sendMessage("[VOTEMSG] Р’С‹ СѓР¶Рµ РїСЂРѕРіРѕР»РѕСЃРѕРІР°Р»Рё!");
 					}
 				}
 				if (t != true) {
@@ -106,14 +106,14 @@ public class VoteHandler {
 	private static void endVote() {
 		vote = false;
 		if (truevote == falsevote) {
-			Bukkit.getServer().broadcastMessage("[VOTEMSG] Голоса распределились поровну!");
+			Bukkit.getServer().broadcastMessage("[VOTEMSG] Р“РѕР»РѕСЃР° СЂР°СЃРїСЂРµРґРµР»РёР»РёСЃСЊ РїРѕСЂР°РІРЅСѓ!");
 		}
 		if (truevote > falsevote) {
-			Bukkit.getServer().broadcastMessage("[VOTEMSG] Голосов за больше! " + plName + " будет замучен!");
+			Bukkit.getServer().broadcastMessage("[VOTEMSG] Р“РѕР»РѕСЃРѕРІ Р·Р° Р±РѕР»СЊС€Рµ! " + plName + " Р±СѓРґРµС‚ Р·Р°РјСѓС‡РµРЅ!");
 			Mute.addMute(plName);
 		}
 		if (truevote < falsevote) {
-			Bukkit.getServer().broadcastMessage("[VOTEMSG] Голосов против больше! " + plName + " не  будет замучен!");
+			Bukkit.getServer().broadcastMessage("[VOTEMSG] Р“РѕР»РѕСЃРѕРІ РїСЂРѕС‚РёРІ Р±РѕР»СЊС€Рµ! " + plName + " РЅРµ Р±СѓРґРµС‚ Р·Р°РјСѓС‡РµРЅ!");
 		}
 		playersvote = null;
 		cd = true;
